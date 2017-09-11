@@ -1,4 +1,4 @@
-# SDDproject
+# SD&D Project, Fall 2017
 
 ## Team Roster
 - Ben Crevier
