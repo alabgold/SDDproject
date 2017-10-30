@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>RushMe</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body
+  <html lang="en" ng-app="App">
+  <head>
+    <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/angular_material/0.8.3/angular-material.min.css">
+  </head>
+
+  <div class="splash" ng-cloak="">
+    <img src="data/rushMeColor.png" align="center" width='100px'>
+    <p>Loading</p>
+  </div>
+  <div ng-cloak="">
+  <body layout="row" ng-controller="AppCtrl" >
+      <md-sidenav layout="column" class="md-sidenav-left md-whiteframe-z2" md-component-id="left" md-is-locked-open="false">
+        <md-toolbar class="md-tall md-hue-2">
+          <span flex></span>
+          <div layout="column" class="md-toolbar-tools-bottom inset">
+            <h1>RushMe<h1>
+          </div>
+        </md-toolbar>
+        <md-list>
+        <md-item ng-repeat="item in menu">
+          <a>
+            <md-item-content md-ink-ripple layout="row" layout-align="start center">
+              <div class="inset">
+                <ng-md-icon icon="{{item.icon}}"></ng-md-icon>
+              </div>
+              <div class="inset">{{item.title}}
+              </div>
+            </md-item-content>
+          </a>
+        </md-item>
+        <br>
+        <md-divider></md-divider>
+        <md-subheader></md-subheader>
+        <md-item ng-repeat="item in settings">
+          <a>
+            <md-item-content md-ink-ripple layout="row" layout-align="start center">
+              <div class="inset">
+                <ng-md-icon icon="{{item.icon}}"></ng-md-icon>
+              </div>
+              <div class="inset">{{item.title}}
+              </div>
+            </md-item-content>
+          </a>
+        </md-item>
+      </md-list>
+      </md-sidenav>
+      <div layout="column" class="relative" layout-fill role="main">
+        <md-toolbar ng-show="!showSearch">
+          <div class="md-toolbar-tools">
+            <md-button ng-click="toggleSidenav('left')"  aria-label="Menu">
+              <ng-md-icon icon="menu"></ng-md-icon>
+            </md-button>
+            <span flex></span>
+            <h1> RushMe</h1>
+          </div>
+        </md-toolbar>
+
+    <div ng-controller="AppCtrl" class="md-padding dialogdemoBasicUsage" id="popupContainer" ng-cloak="" ng-app="MyApp">
+      <md-content flex md-scroll-y>
+        <ui-view layout="column" layout-fill layout-padding>
+          <div class='md-padding' layout="row" layout-wrap>
+            <md-card style="width: 32%;" ng-repeat="product in frats track by $index">
+              <img src="data/defaultPic.png" class="md-card-image" alt="Frat Cover Photo">
+              <md-card-content>
+                <div>
+                  <!-- name -->
+                  <h2>{{product}}</h2>
+                  <br/>
+                  <!-- description -->
+                  <!-- <p> {{product.description}} </p> -->
+                  <hr>
+                  <span flex></span>
+                  <div class="md-actions" layout="row" layout-align="end center">
+                    <md-button><ng-md-icon icon="favorite"></ng-md-icon></md-button>
+                    <md-button ng-click="showAdvanced($event, product)"><ng-md-icon icon="menu"></ng-md-icon></md-button>
+                  </div>
+                </div>
+              </md-card-content>
+            </md-card>
+          </div>
+        </ui-view>
+      </md-content>
+    </div>
+    <div hide-gt-sm="" layout="row" layout-align="center center" flex="">
+      <md-checkbox ng-model="customFullscreen" aria-label="Fullscreen Custom Dialog">Force Custom Dialog Fullscreen</md-checkbox>
+    </div>
+
+    <script type="text/ng-template" id="orderDialog.tmpl.html">
+      <md-dialog aria-label="Frat Page" ng-cloak >
+        <md-toolbar>
+          <div class="md-toolbar-tools">
+            <!-- name -->
+            <h2>{{product}}</h2>
+              <md-button class="md-icon-button" ng-click="cancel()">
+                <md-icon md-svg-src="img/icons/ic_close_24px.svg" aria-label="Close dialog"></md-icon>
+              </md-button>
+            </div>
+          </md-toolbar>
+          <md-dialog-content>
+          <md-content flex md-scroll-y>
+            <img src="data/defaultPic.png" width='100%' alt="Frat Cover Photo">
+            <div class="md-dialog-content">
+              <!-- description -->
+              <!-- {{product.description}} -->
+            </div>
+            </md-content>
+          </md-dialog-content>
+      </md-dialog>
+    </script>
+      <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.6/angular.min.js"></script>
+      <scritp src="https://ajax.googleapis.com/ajax/libs/angularjs/X.Y.Z/angular-route.js"></script>
+      <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.6/angular-animate.min.js"></script>
+      <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.5/angular-aria.min.js"></script>
+      <script src="https://ajax.googleapis.com/ajax/libs/angular_material/0.8.3/angular-material.min.js"></script>
+      <script src="https://cdn.jsdelivr.net/angular-material-icons/0.4.0/angular-material-icons.min.js"></script>
+    </div>
+    </body>
+  </html>
+
+      <script  src="js/index.js"></script>
+
+</body>
+</html>
