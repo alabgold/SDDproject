@@ -1,5 +1,6 @@
 USE fratinfo;
 
+/*Create a table for all of the houses' infoy*/
 CREATE TABLE house_info (
 	name varchar(50) NOT NULL PRIMARY KEY,
 	description varchar(2000) NOT NULL,
@@ -12,7 +13,7 @@ CREATE TABLE house_info (
 	address varchar(200)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
-
+/*Insert one entry for each fraternity*/
 INSERT INTO house_info(name, description, chapter, members, cover_image, profile_image, calendar_image, preview_image, address)
 	VALUES
 	('Acacia', 'Since it''s founding in 1949, Acacia has been an active member of the Rensselaer fraternity system and has taken an active part of the Troy, NY community in which it resides. Our house is located on Sunset Terrace behind BAR-H and RAHPS.\n\nBe sure to check our rush calendar to see if there are any events you might be interested in attending. You are always welcome to come by the house for some dinner (every school night, 6:00 PM) or just to hang out.\n\nBeing a part of a fraternity is a lot more than just living together in a house; it is learning to deal with different types of people, learning responsibility for your actions, having friends to help you through difficulties, and most importantly forming ties with friends that will last a lifetime.\n\nEach member of Acacia is an individual with their own style, goals, knowledge, and background. Each member of Acacia pursues their own path after graduation. But, each member of Acacia strives to live up to the Preamble to the Laws of Acacia in his own way:\n\nWe, students, faculty, and alumni of various universities and colleges, do hereby adopt this Constitution; to strengthen the ties of friendship, one with another; to prepare ourselves as educated men, to take a more active part and to have a greater influence in the affairs of the community in which we may reside; and, above all, to seek the truth and knowing it, to give light to those with whom we may be associated as we travel along life''s pathway.', 'RPI', NULL, NULL, 'FratInfoPics/Acacia_Profile.png', 'FratInfoPics/Acacia_Cal.png', NULL, '145 Sunset Terrace Troy NY 12180'),
@@ -46,6 +47,7 @@ INSERT INTO house_info(name, description, chapter, members, cover_image, profile
 	('Zeta Psi', 'Since 1847, Zeta Psi has built its foundation on a lifelong brotherhood. We are a small, close-knit group that prides ourselves on community service, academics, athletics, and other forms of campus involvement. We are proud to feature members of student government, varsity sports teams, ROTC, and numerous campus wide clubs. All members are motivated to take on house positions which help strengthen organizational, management and leadership skills. Throughout our years at Rensselaer, we build a bond strong enough to last long beyond graduation.', 'Pi', NULL, NULL, 'FratInfoPics/Zeta_Psi_Profile.png', 'FratInfoPics/Zeta_Psi_Cal.png', NULL, '25 Belle Ave Troy NY 12180');
 
 
+/*Table for all rush events*/
 CREATE TABLE events (
 	house varchar(50) NOT NULL,
 	event_name varchar(50) NOT NULL,
@@ -53,10 +55,11 @@ CREATE TABLE events (
 	end_time varchar(10),
 	event_date varchar(10) NOT NULL,
 	location varchar(100) DEFAULT NULL,
-	CONSTRAINT fk_house FOREIGN KEY (house)
+	CONSTRAINT fk_house FOREIGN KEY (house) /*Foreign key based on house in first table - easy grouping*/
 	REFERENCES house_info(name)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+/*Insert all rush events for the upcoming semester*/
 INSERT INTO events(house, event_name, start_time, end_time, event_date, location)
 	VALUES
 	('Acacia', 'Classes Begin', '08:00', '20:00', '08/31/2017', 'Campus'),
